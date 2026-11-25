@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>마지막 장 · 실전 연습장 — 그래프 이론 연구실 — 점과 선으로 관계를 보는 법</title>
+<meta name="description" content="배달 길찾기 센터, 시험 시간표 사무실, 물류 관 증설 본부를 운영하며 그래프 이론을 써 보는 시뮬레이터.">
+<meta property="og:title" content="마지막 장 · 실전 연습장 — 그래프 이론 연구실 — 점과 선으로 관계를 보는 법">
+<meta property="og:description" content="배달 길찾기 센터, 시험 시간표 사무실, 물류 관 증설 본부를 운영하며 그래프 이론을 써 보는 시뮬레이터.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="../img/og/og_practice.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lab.css">
+<!-- px-fix v1 --><style id="px-fix">img{image-rendering:auto!important}</style><script id="px-fix-js">(function(){var R=window.ResizeObserver;function f(i){var n=i.naturalWidth,w=i.getBoundingClientRect().width;if(!n||!w)return;var s=w*(window.devicePixelRatio||1)/n;i.style.setProperty("image-rendering",s>=1.95?"pixelated":"auto","important")}var ro=R?new R(function(es){es.forEach(function(e){f(e.target)})}):null;function a(i){if(i.__px)return;i.__px=1;i.addEventListener("load",function(){f(i)});if(ro)ro.observe(i);f(i)}function all(r){(r||document).querySelectorAll&&(r||document).querySelectorAll("img").forEach(a)}function go(){all();if(window.MutationObserver)new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType!==1)return;if(n.tagName==="IMG")a(n);else all(n)})})}).observe(document.documentElement,{childList:true,subtree:true});window.addEventListener("resize",function(){document.querySelectorAll("img").forEach(f)})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script><!-- /px-fix -->
+</head><body>
+<nav class="top" aria-label="실전 연습장 목차"><a class="logo" href="../index.html">그래프 이론 연구실</a><a href="#sim">사업장</a><a href="#wrap">마무리</a><a href="../09_spectral_graph_theory.html">09장</a></nav><div id="prog"></div>
+<div class="cover" id="top" role="img" aria-label="실전 연습장 표지 — 세 사업장 앞의 심판 박사와 두 조"><canvas class="bgpx" data-seed="29" data-motif="1" aria-hidden="true"></canvas><span class="badge">표지 그림 준비 중 · docs/IMG_specs.md</span><div class="cchars"><img class="" data-who="doc" data-mood="front" alt="" aria-hidden="true"><img class="" data-who="sia" data-mood="smile" alt="" aria-hidden="true"><img class="" data-who="moa" data-mood="smile" alt="" aria-hidden="true"><img class="" data-who="x3" data-mood="e13" alt="" aria-hidden="true"></div><div class="ctext"><span class="no">마지막 장 · 실전 연습장</span><h1>그래프 사업장 시뮬레이터</h1><p>배달 길찾기 센터 · 시험 시간표 사무실 · 물류 관 증설 본부</p></div></div>
+<header class="hero"><div class="wrap"><div class="kicker">마지막 장 · 실전 연습장</div><h1>그래프 사업장 시뮬레이터</h1><p class="q">핵심 질문 — 배운 개념으로 가상 사업장의 결정을 내리면, 숫자가 어떻게 달라질까?</p><p>사업장 세 곳을 탭으로 골라 운영해 보세요. 초록 상자는 시장 환경(내가 못 바꾸는 조건), 파란 상자는 내 결정이에요. 성적표·그래프·캐릭터 대사가 바로 바뀌고, 미션 3개는 직접 조작한 뒤에 자동으로 판정돼요. 주소 끝에 #route, #exam, #pipe를 붙이면 그 사업장이 바로 열려요.</p><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>마지막 장은 실습입니다. 정답은 계산이 판정해요. 사업장마다 미션 세 개, 모두 아홉 개!</p></div></div><div class="say" data-who="moa"><img class="who" data-who="moa" data-mood="cheer" alt="" aria-hidden="true"><div><b class="name">인턴 모아</b><p>1조, 2조 모두 같이 운영해 봐요!</p></div></div></div></header>
+<section class="level" style="padding-top:24px"><div class="wrap" id="sim"></div></section>
+<section class="level" id="wrap"><div class="wrap"><h2>마무리 — 세 사업장이 함께 묻는 질문</h2>
+<p>세 사업장은 모두 「같은 그래프라도 무엇을 재느냐(걸음 수인가 시간인가, 색 수인가 충돌 수인가, 관 크기인가 흐름인가)에 따라 가장 좋은 답이 달라진다」는 질문을 던져요. 배달 센터에서는 선의 무게가, 시간표 사무실에서는 이웃 관계가, 물류 본부에서는 가장 좁은 자르는 선이 답을 정했어요. 결과 숫자를 믿기 전에 그 숫자를 만든 기준을 먼저 확인하는 것 — 이것이 이 연구실이 말하는 「AI 결과를 판단하는 힘」이에요.</p>
+<div class="lim"><b>모형의 한계</b> — 사업장의 숫자(이동 시간, 과목 충돌, 관 용량, 증설 효과)는 모두 교육용 예시값이에요. 실제 배송·학사·물류 계획에는 시간대, 비용, 사람의 선택처럼 훨씬 많은 조건이 붙어요. 이 페이지의 결과는 경영·투자 권고가 아닙니다.</div>
+</div></section>
+<footer><div class="wrap">
+<div class="nextprev"><a href="../09_spectral_graph_theory.html">← 09 스펙트럼 그래프 이론 — 그래프의 숫자 지문</a><a href="../index.html">오리엔테이션으로 →</a></div>
+<p>글 · 안상선 (<a href="https://adminmrobo.github.io/who_am_i/who_am_i.html">https://adminmrobo.github.io/who_am_i/who_am_i.html</a>) · (주)M-Robo 대표</p>
+<p class="note">시리즈 「그래프 이론 연구실 — 점과 선으로 관계를 보는 법」 · 캐릭터 그림은 연구실 캐릭터 팩(adminmrobo/fruitfly-lab-expressions)을 쓰며 허락 없이 다시 쓸 수 없습니다.</p>
+</div></footer>
+<script src="../assets/sprites.js"></script><script src="../assets/widgets.js"></script><script src="../assets/lab.js"></script><script src="../assets/practice.js"></script></body></html>
