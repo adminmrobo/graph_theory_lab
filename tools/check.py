@@ -47,5 +47,5 @@ async def main(pages):
 
 
 if __name__ == '__main__':
-    pages = sys.argv[1:] or sorted([os.path.relpath(x, ROOT) for x in glob.glob(os.path.join(ROOT, '*.html')) + glob.glob(os.path.join(ROOT, 'practice', '*.html'))])
+    pages = sys.argv[1:] or sorted([os.path.relpath(x, ROOT) for x in glob.glob(os.path.join(ROOT, '*.html')) + glob.glob(os.path.join(ROOT, 'practice', '*.html')) + glob.glob(os.path.join(ROOT, 'exercise', '*.html'))])
     sys.exit(1 if asyncio.run(main(pages)) else 0)

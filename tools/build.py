@@ -213,7 +213,7 @@ def chapter(ch, prevc, nextc):
     stg = ch['stages']
     navl = ''.join('<a href="#lv%d">%d단계%s</a>' % (i, i, '·심화' if (ch['no'], i) in DEEP else '') for i in range(1, len(stg) + 1))
     o = [head('%02d %s — %s' % (n, ch['title'], SERIES), ch['q'], og='img/og/og_%02d.webp' % n)]
-    o.append(f'<nav class="top" aria-label="이 페이지 목차"><a class="logo" href="index.html">{LOGO}</a><a href="#three">3줄 요약</a><a href="#class">수업</a><a href="#scene">장면</a><a href="#map">큰 그림</a>{navl}<a href="#ai">AI 판단</a><a href="#duel">대결</a><a href="#sum">정리</a><a href="#kg">색인</a><a href="#export">꾸러미</a></nav><div id="prog"></div>')
+    o.append(f'<nav class="top" aria-label="이 페이지 목차"><a class="logo" href="index.html">{LOGO}</a><a href="#three">3줄 요약</a><a href="#class">수업</a><a href="#scene">장면</a><a href="#map">큰 그림</a>{navl}<a href="#ai">AI 판단</a><a href="#duel">대결</a><a href="#sum">정리</a><a href="exercise/index.html#ex{n:02d}">연습 문제</a><a href="#kg">색인</a><a href="#export">꾸러미</a></nav><div id="prog"></div>')
     # 표지 (대체 표지)
     cc = ['doc', 'fly', 'robo', ch['star'][0]]
     cm = ['front', 'magnify', 'smile', ch['star'][1]]
@@ -526,11 +526,13 @@ def main():
         nextc = (chs[i + 1]['slug'] + '.html', '%02d %s' % (chs[i + 1]['no'], chs[i + 1]['title'])) if i + 1 < len(chs) else ('practice/index.html', '마지막 장 · 실전 연습장')
         open(os.path.join(ROOT, ch['slug'] + '.html'), 'w', encoding='utf-8').write(chapter(ch, prevc, nextc))
         print('built', ch['slug'])
-    import index_page, practice_page
+    import index_page, practice_page, exercise_page
     index_page.build(sys.modules[__name__], chs)
     practice_page.build(sys.modules[__name__], chs)
+    exercise_page.build(sys.modules[__name__], chs)
     import shutil
     shutil.copy(os.path.join(ROOT, 'assets', 'src', 'practice.js'), os.path.join(ROOT, 'assets', 'practice.js'))
+    shutil.copy(os.path.join(ROOT, 'assets', 'src', 'exercise.js'), os.path.join(ROOT, 'assets', 'exercise.js'))
     sprites_local()
 
 

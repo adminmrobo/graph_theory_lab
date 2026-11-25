@@ -44,7 +44,7 @@ Wide 16:9 composition. Keep the RIGHT 40% of the image mostly empty white space 
 Characters and the main scene on the LEFT 60%. Graph motif = colored square pixel dots (nodes) connected by thin pixel lines (edges).
 ```
 
-**빼 달라는 말 (NEGATIVE)** — 도구에 「제외」 칸이 있으면 넣어요.
+**빼 달라는 말 (NEGATIVE)** — 도구에 「제외」 입력란이 있으면 넣어요.
 ```
 text, letters, Korean characters, numbers, watermark, logo, dark background, night scene, photorealistic, 3D render, blurry, smooth gradients, white robot, extra characters not in the reference
 ```

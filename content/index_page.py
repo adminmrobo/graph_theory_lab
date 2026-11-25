@@ -18,7 +18,7 @@ def build(B, chs):
                '차수': '한 점에 붙은 선의 수.'}
     n = len(chs)
     o = [B.head(B.SERIES + ' · 오리엔테이션', '데이터·코드를 처음 배우는 분을 위한 그래프 이론 %d장 + 실전 연습장. 심판 박사, 조장 초파리·주판봇, 조원 여섯이 조별발표·개인발표·상담으로 배우는 연구실 해설 시리즈.' % n)]
-    o.append('<nav class="top" aria-label="목차"><a class="logo" href="index.html">%s</a><a href="#three">3줄 요약</a><a href="#cast">두 조</a><a href="#pillars">네 기둥</a><a href="#terms">용어</a><a href="#toc">목차</a><a href="#how">수업 방식</a><a href="practice/index.html">실전 연습장</a></nav><div id="prog"></div>' % B.LOGO)
+    o.append('<nav class="top" aria-label="목차"><a class="logo" href="index.html">%s</a><a href="#three">3줄 요약</a><a href="#cast">두 조</a><a href="#pillars">네 기둥</a><a href="#terms">용어</a><a href="#toc">목차</a><a href="#how">수업 방식</a><a href="exercise/index.html">연습 문제</a><a href="practice/index.html">실전 연습장</a></nav><div id="prog"></div>' % B.LOGO)
     o.append(B.cover_html('cover_00', '그래프 이론 연구실', '오리엔테이션 · 00', '점과 선으로 관계를 보는 법 — %d장 + 실전 연습장' % n, '그래프 이론 연구실 표지 — 픽셀 점과 선으로 이어진 관계도 앞의 두 조와 심판 박사',
                           chars=[('doc', 'front'), ('robo', 'happy'), ('fly', 'point'), ('asst', 'smile')]))
     o.append(f'''<header class="hero"><div class="wrap"><div class="kicker">연구실 해설 시리즈 · 그래프 이론 · 데이터·코드 입문자용</div><h1>{esc(B.SERIES)}</h1>
@@ -54,8 +54,9 @@ def build(B, chs):
     cards = ''.join('<a href="%s.html"><span class="n">%02d · 기둥 %d · %s · 약 %d분 %s</span><b>%s</b><span>%s</span><span class="fmt">%s</span></a>' % (
         c['slug'], c['no'], c['pillar'], B.STARS[B.LEVEL[c['no']]].split(' ')[0], B.MINUTES[c['no']], '<span class="track basic">기본</span>' if c['no'] in B.BASIC else '<span class="track adv">심화</span>',
         esc(c['title']), esc(c['q']), esc(c['format'][0])) for c in chs)
+    cards += '<a href="exercise/index.html"><span class="n">연습</span><b>연습 문제 — 직접 계산해 보기</b><span>장마다 계산 문제 2개, 모두 18개. 숫자를 입력해 채점하고 단계별 풀이와 흔한 실수를 확인해요.</span><span class="fmt">입력 채점</span></a>'
     cards += '<a href="practice/index.html"><span class="n">마지막 장</span><b>실전 연습장 — 그래프 사업장 시뮬레이터</b><span>배달 길찾기 센터, 시험 시간표 사무실, 물류 관 증설 본부를 운영하며 배운 것을 써 봐요.</span><span class="fmt">시뮬레이터</span></a>'
-    o.append(f'<section class="level" id="toc"><div class="wrap"><h2>목차 — {n}장 + 실전 연습장</h2><div class="toc">{cards}</div><p class="note">「기본」 장만 따라가도 실전 연습장까지 갈 수 있어요. 「심화」(09장)는 고윳값이 나오는 장이라 마지막에 도전하세요.</p></div></section>')
+    o.append(f'<section class="level" id="toc"><div class="wrap"><h2>목차 — {n}장 + 연습 문제 + 실전 연습장</h2><div class="toc">{cards}</div><p class="note">「기본」 장만 따라가도 실전 연습장까지 갈 수 있어요. 「심화」(09장)는 고윳값이 나오는 장이라 마지막에 도전하세요.</p></div></section>')
     rows = ''.join('<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (esc(k), esc(v), ', '.join('%02d' % c['no'] for c in chs if any(s['kind'] == key for s in c.get('scenes', []))) or '각 장 끝') for k, v, key in FORMAT_NOTE)
     o.append(f'''<section class="level" id="how"><div class="wrap"><h2>수업 방식 — 장마다 다른 장면</h2>
 <div class="tw"><table class="tb"><thead><tr><th>장면</th><th>어떻게 하나</th><th>나오는 장</th></tr></thead><tbody>{rows}</tbody></table></div>
