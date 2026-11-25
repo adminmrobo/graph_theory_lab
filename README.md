@@ -24,6 +24,7 @@
 - `assets/` — 공용 스타일·캐릭터·퀴즈·대결(`lab.css`, `lab.js`, `sprites.js`), 그림 실험 20개(`src/g1~g3.js` → `widgets.js`), 실전 연습장(`practice.js`), 지식 색인·꾸러미(`js/kgx.js`)
 - `img/source/` — 원자료 인포그래픽 9장, `img/og/` — 공유 미리보기(임시), `img/cover/` — 표지(제작 예정)
 - `docs/IMG_specs.md` — 표지 11장 지시문(16비트 RPG 픽셀아트, 흰 배경)
+- `docs/IMG_prompts.md` — 생성 도구에 붙여 넣는 영어 프롬프트(표지 11장 + 선택 장면 9장), 요청 꾸러미 순서, 저장 이름
 - `docs/WORK_NOTES.md` — 독자 진단, 원자료 바로잡기, 검산, 교수법 자가 채점(21/21)
 - `docs/PERSONA_REVIEW.md` — 페르소나 검사(데이터·코드를 처음 배우는 학생 중심)와 반영 내역
 - 검사 도구: `tools/check.py`(390·1280px 화면), `tools/test_duels.py`(조장 대결), `tools/test_practice.py`(계산 검산 + 실전 연습장 미션), `tools/make_og.py`
