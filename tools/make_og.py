@@ -13,9 +13,9 @@ def og_from_cover(key, ckey, title, label):
     cp = os.path.join(ROOT, 'img', 'cover', ckey + '.webp')
     if not os.path.exists(cp):
         return False
-    c = Image.open(cp).convert('RGB'); w = round(c.width * 630 / c.height)
-    c = c.resize((w, 630), Image.LANCZOS)
-    big = Image.new('RGB', (1200, 630), 'white'); big.paste(c, (0, 0)); d = ImageDraw.Draw(big)
+    # 표지는 480×270 격자의 4배 → 격자로 되돌린 뒤 정수배(2배, 960×540)로만 키워 픽셀 경계를 지킨다
+    c = Image.open(cp).convert('RGB').resize((480, 270), Image.NEAREST).resize((960, 540), Image.NEAREST)
+    big = Image.new('RGB', (1200, 630), 'white'); big.paste(c, (0, 45)); d = ImageDraw.Draw(big)
     x0 = 640; d.rectangle([x0 - 16, 0, 1200, 630], fill='white')
     f1 = ImageFont.truetype(FONT, 26); f2 = ImageFont.truetype(FONT, 46)
     d.rectangle([x0, 90, x0 + d.textlength(label, font=f1) + 24, 134], fill=(22, 33, 43)); d.text((x0 + 12, 93), label, font=f1, fill='white')

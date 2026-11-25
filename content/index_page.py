@@ -23,7 +23,7 @@ def build(B, chs):
                           chars=[('doc', 'front'), ('robo', 'happy'), ('fly', 'point'), ('asst', 'smile')]))
     o.append(f'''<header class="hero"><div class="wrap"><div class="kicker">연구실 해설 시리즈 · 그래프 이론 · 데이터·코드 입문자용</div><h1>{esc(B.SERIES)}</h1>
 <p class="q">핵심 질문 — 복잡한 관계를 점과 선으로 적으면, 무엇을 계산하고 무엇을 볼 수 있을까?</p>
-<p>[[그래프]]는 점과 선으로 「무엇과 무엇이 이어져 있나」를 적는 방법이에요. 친구 관계, 지하철 노선, 택배 물류, 웹 링크가 모두 그래프예요. 이 시리즈는 인포그래픽 9장의 아홉 주제를 {n}개 장(장마다 2단계)으로 풀고, 그림을 직접 눌러 보며 배우게 만들었어요.</p>
+<p>{B.rich('[[그래프]]는 점과 선으로 「무엇과 무엇이 이어져 있나」를 적는 방법이에요. 친구 관계, 지하철 노선, 택배 물류, 웹 링크가 모두 그래프예요. 이 시리즈는 인포그래픽 9장의 아홉 주제를 {n}개 장(장마다 2단계)으로 풀고, 그림을 직접 눌러 보며 배우게 만들었어요.')}</p>
 <div class="kpis"><div class="kpi g"><b>{n}장</b><span>한 장에 2단계, 20~25분</span></div><div class="kpi m"><b>2개 조</b><span>꼭짓점조 vs 연결선조</span></div><div class="kpi a"><b>18개</b><span>직접 눌러 보는 그림 실험</span></div><div class="kpi r"><b>3곳</b><span>실전 연습장 사업장</span></div></div>''' + says([('doc', 'front', '안녕하세요, 이 연구실의 심판 박사입니다. 데이터도 코드도 처음이어도 괜찮아요. 본문에는 코드가 없고, 궁금한 분만 접기 상자를 펼치면 돼요.'),
                                                                                                                                                                        ('asst', 'smile', '저도 처음이에요. 모르는 게 나오면 제가 먼저 손을 들게요!')]) + '</div></header>')
     o.append('''<div class="wrap"><div class="three" id="three"><h2>처음 오신 분께 — 이 시리즈를 3줄로</h2><ol>

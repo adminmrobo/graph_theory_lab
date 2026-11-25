@@ -22,7 +22,7 @@
 - `index.html`, `NN_*.html`, `practice/index.html` — 페이지 (외부 라이브러리 없음, 글꼴만 외부 요청, 브라우저 저장소 사용 안 함)
 - `content/` — 장별 내용 데이터, `tools/build.py` — 조립 (`python3 tools/build.py`)
 - `assets/` — 공용 스타일·캐릭터·퀴즈·대결(`lab.css`, `lab.js`, `sprites.js`), 그림 실험 20개(`src/g1~g3.js` → `widgets.js`), 실전 연습장(`practice.js`), 지식 색인·꾸러미(`js/kgx.js`)
-- `img/source/` — 원자료 인포그래픽 9장, `img/og/` — 공유 미리보기(임시), `img/cover/` — 표지(제작 예정)
+- `img/source/` — 원자료 인포그래픽 9장, `img/cover/` — 표지 11장(16비트 픽셀아트, 1920×1080), `img/scene/` — 장면 그림 9장(각 장 1단계 비유 상자), `img/og/` — 공유 미리보기(표지에서 자름)
 - `docs/IMG_specs.md` — 표지 11장 지시문(16비트 RPG 픽셀아트, 흰 배경)
 - `docs/IMG_prompts.md` — 생성 도구에 붙여 넣는 영어 프롬프트(표지 11장 + 선택 장면 9장), 요청 꾸러미 순서, 저장 이름
 - `docs/WORK_NOTES.md` — 독자 진단, 원자료 바로잡기, 검산, 교수법 자가 채점(21/21)
