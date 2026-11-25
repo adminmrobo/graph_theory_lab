@@ -18,7 +18,7 @@ def build(B, chs):
                '차수': '한 점에 붙은 선의 수.'}
     n = len(chs)
     o = [B.head(B.SERIES + ' · 오리엔테이션', '데이터·코드를 처음 배우는 분을 위한 그래프 이론 %d장 + 실전 연습장. 심판 박사, 조장 초파리·주판봇, 조원 여섯이 조별발표·개인발표·상담으로 배우는 연구실 해설 시리즈.' % n)]
-    o.append('<nav class="top" aria-label="목차"><a class="logo" href="index.html">%s</a><a href="#three">3줄 요약</a><a href="#cast">두 조</a><a href="#pillars">네 기둥</a><a href="#toc">목차</a><a href="#how">수업 방식</a><a href="practice/index.html">실전 연습장</a></nav><div id="prog"></div>' % B.LOGO)
+    o.append('<nav class="top" aria-label="목차"><a class="logo" href="index.html">%s</a><a href="#three">3줄 요약</a><a href="#cast">두 조</a><a href="#pillars">네 기둥</a><a href="#terms">용어</a><a href="#toc">목차</a><a href="#how">수업 방식</a><a href="practice/index.html">실전 연습장</a></nav><div id="prog"></div>' % B.LOGO)
     o.append(B.cover_html('cover_00', '그래프 이론 연구실', '오리엔테이션 · 00', '점과 선으로 관계를 보는 법 — %d장 + 실전 연습장' % n, '그래프 이론 연구실 표지 — 픽셀 점과 선으로 이어진 관계도 앞의 두 조와 심판 박사',
                           chars=[('doc', 'front'), ('robo', 'happy'), ('fly', 'point'), ('asst', 'smile')]))
     o.append(f'''<header class="hero"><div class="wrap"><div class="kicker">연구실 해설 시리즈 · 그래프 이론 · 데이터·코드 입문자용</div><h1>{esc(B.SERIES)}</h1>
@@ -44,6 +44,13 @@ def build(B, chs):
 <div class="steps">''' + ''.join(pill) + '''</div>
 <details><summary>원자료 인포그래픽 표지 보기 (영어 그림)</summary><p class="note">원자료 표지의 스펙트럼 값 {−2, −1, 0, 0, 1, 3}은 점 5개 그래프인데 값이 6개이고 합도 0이 아니어서, 09장에서 계산한 값 {−2, −1.17, 0, 0.69, 2.48}로 바꿉니다.</p><img loading="lazy" src="img/source/src00.webp" width="919" height="919" alt="그래프 이론 시리즈 개요 인포그래픽"></details>
 </div></section>''')
+    TERMS = [('그래프', '점과 선으로 관계를 적은 것', '반 친구 관계도', 1), ('꼭짓점 · 변', '점(사람·장소) · 선(관계)', '사람 · 친구 사이', 1), ('차수', '한 점에 붙은 선의 수', '친구 수', 1),
+             ('인접 리스트 · 행렬', '점별 이웃 목록 · n × n의 0/1 표', '사람별 메모 · 출석부', 2), ('경로 · 사이클', '점이 안 겹치는 길 · 제자리로 오는 길', '통학길 · 공원 한 바퀴', 3), ('연결 요소', '서로 길이 있는 점들의 덩어리', '다리로 이어진 섬 무리', 3),
+             ('트리 · 신장 트리', '사이클 없는 연결 그래프 · 모든 점을 잇는 트리', '조직도 · 최소 도로 공사', 4), ('오일러 · 해밀턴', '모든 선 한 번씩 · 모든 점 한 번씩', '다리 산책 · 택배 순서', 5),
+             ('평면 그래프 · 채색수', '엇갈림 없이 그리기 · 이웃끼리 다른 색 최소 수', '노선도 · 시험 시간대 수', 6), ('매칭 · 최대 흐름', '겹치지 않는 짝 · 용량 안에서 최대로 보내기', '멘토 배정 · 택배 트럭', 7),
+             ('최단 경로', '무게 합이 가장 작은 길', '가장 빠른 통학길', 8), ('고윳값 · 스펙트럼', '행렬의 숫자 지문', '그래프의 지문', 9)]
+    trow = ''.join('<tr><td><b>%s</b></td><td>%s</td><td>%s</td><td><a href="%s.html">%02d장</a></td></tr>' % (esc(a), esc(b2), esc(c), [x for x in chs if x['no'] == k][0]['slug'], k) for a, b2, c, k in TERMS)
+    o.append('<section class="level" id="terms"><div class="wrap"><h2>그래프 용어 한 장 정리 — 막히면 여기로</h2><p>용어가 헷갈릴 때 이 표로 돌아오세요. 오른쪽 장 이름을 누르면 처음 나오는 곳으로 가요.</p><div class="tw"><table class="tb"><thead><tr><th>용어</th><th>한 줄 뜻</th><th>일상 비유</th><th>처음 나오는 곳</th></tr></thead><tbody>%s</tbody></table></div></div></section>' % trow)
     cards = ''.join('<a href="%s.html"><span class="n">%02d · 기둥 %d · %s · 약 %d분 %s</span><b>%s</b><span>%s</span><span class="fmt">%s</span></a>' % (
         c['slug'], c['no'], c['pillar'], B.STARS[B.LEVEL[c['no']]].split(' ')[0], B.MINUTES[c['no']], '<span class="track basic">기본</span>' if c['no'] in B.BASIC else '<span class="track adv">심화</span>',
         esc(c['title']), esc(c['q']), esc(c['format'][0])) for c in chs)

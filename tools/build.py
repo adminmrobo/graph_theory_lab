@@ -414,7 +414,7 @@ def cover_html(key, title, label, subt, alt, up='', chars=None):
     cc = ''.join(img(w, m, cls='') for w, m in (chars or [('doc', 'front'), ('fly', 'magnify'), ('robo', 'smile'), ('asst', 'smile')]))
     seed = sum(map(ord, key)) % 97 + 3
     return (f'<div class="cover" id="top" role="img" aria-label="{esc(alt)}"><canvas class="bgpx" data-seed="{seed}" data-motif="{seed % 4}" aria-hidden="true"></canvas>'
-            f'<span class="badge">표지 그림 준비 중 · docs/IMG_specs.md</span><div class="cchars">{cc}</div>'
+            f'<span class="badge">표지 그림 준비 중</span><div class="cchars">{cc}</div>'
             f'<div class="ctext"><span class="no">{esc(label)}</span><h1>{esc(title)}</h1><p>{esc(subt)}</p></div></div>')
 
 
@@ -471,7 +471,7 @@ def stage_html(ch, i, st):
             rich(s['cap']), fixes, s['n'], esc(s['alt'])))
     if st.get('code'):
         dl = ''.join('<dt><code>%s</code></dt><dd>%s</dd>' % (esc(c), rich(m)) for c, m in st['code'])
-        o.append('<details class="code"><summary>파이썬 코드로 보면 (몰라도 됩니다)</summary><p class="note">위 실험을 컴퓨터로 할 때 쓰는 코드 몇 줄이에요. 한 줄마다 뜻을 붙였어요. 읽지 않아도 본문을 따라오는 데 문제없어요.</p><dl class="codemap">%s</dl></details>' % dl)
+        o.append('<details class="code"><summary>파이썬 코드로 보면 (몰라도 됩니다)</summary><p class="note">위 실험을 컴퓨터로 할 때 쓰는 코드 몇 줄이에요. 한 줄마다 뜻을 붙였어요. 읽지 않아도 본문을 따라오는 데 문제없어요.</p><p class="note"><b>직접 해 보려면</b> — 설치 없이 브라우저에서 파이썬을 돌리는 구글 Colab(colab.research.google.com)에서 새 노트를 열고, 맨 위에 <code>import networkx as nx</code>를 먼저 적은 뒤 아래 줄을 차례로 실행하세요. 결과가 페이지의 숫자와 같은지 비교하는 것이 가장 좋은 연습이에요.</p><dl class="codemap">%s</dl></details>' % dl)
     if st.get('expert'):
         o.append('<details><summary>더 알고 싶은 분께 — 정확한 정의 (몰라도 됩니다)</summary>%s</details>' % rich(st['expert']))
     o.append('<div class="quiz" data-quiz="q%d"></div>' % i)
